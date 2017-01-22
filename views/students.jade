@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= title
+    p Show all student info:
+    table
+        each student in students
+            tr
+                td
+                    a(href='/students/#{student._id}')= student.firstname
+                td= student.lastname
+                td= student.age

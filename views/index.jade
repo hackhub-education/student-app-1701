@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  form(method='POST', action='/students/search')
+    input(name='firstname', type='text', placeholder='Student Name')
+    input(type='submit')
