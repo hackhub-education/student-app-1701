@@ -10,3 +10,9 @@ block content
                     a(href='/students/#{student._id}')= student.firstname
                 td= student.lastname
                 td= student.age
+                td= student.school
+                td
+                    a(href='/students/update/#{student._id}') Edit
+    a(href='/students/add') Add
+    br
+    a(href='/') Search

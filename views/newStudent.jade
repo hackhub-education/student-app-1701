@@ -1,6 +1,8 @@
 extends layout
 
 block content
+    a(href='/students') Back
+    h1= title
     form(method='POST', action=action)
         input(name='firstname', type='text', placeholder='Frist Name', value=student.firstname)
         br

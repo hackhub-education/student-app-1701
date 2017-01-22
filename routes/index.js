@@ -37,13 +37,13 @@ router.post('/students/add', function(req, res, next) {
 
 /* GET add student form */
 router.get('/students/add', function(req, res, next) {
-  res.render('newStudent', {student: {}, action: '/students/add'});
+  res.render('newStudent', {student: {}, action: '/students/add', title: 'Add New Student'});
 });
 
 /* GET student object and insert it into update form */
 router.get('/students/update/:id', function(req, res, next) {
   Students.findById(req.params.id).exec(function(err, doc) {
-    res.render('newStudent', {student: doc, action: '/students/update/' + doc._id});
+    res.render('newStudent', {student: doc, action: '/students/update/' + doc._id, title: 'Update Student Info'});
   });
 });
 
@@ -71,9 +71,11 @@ router.post('/students/search', function(req, res, next) {
     if (err) {
       // handle error
     } else {
-      res.render('students', {title: 'Search Results', students: doc});
+      if (doc.length === 0) {
+        res.render('students', {title: 'No Results Found.', students: doc});
+      }
+        res.render('students', {title: 'Search Results', students: doc});
     }
-
   });
 });
 
