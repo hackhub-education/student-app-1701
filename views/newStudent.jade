@@ -1,13 +1,13 @@
 extends layout
 
 block content
-    form(method='POST', action='/students/add')
-        input(name='firstname', type='text', placeholder='Frist Name')
+    form(method='POST', action=action)
+        input(name='firstname', type='text', placeholder='Frist Name', value=student.firstname)
         br
-        input(name='lastname', type='text', placeholder='Last Name')
+        input(name='lastname', type='text', placeholder='Last Name', value=student.lastname)
         br
-        input(name='age', type='text', placeholder='Age')
+        input(name='age', type='text', placeholder='Age', value=student.age)
         br
-        input(name='school', type='text', placeholder='School')
+        input(name='school', type='text', placeholder='School', value=student.school)
         br
         input(type='submit')

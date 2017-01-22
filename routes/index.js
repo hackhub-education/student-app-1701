@@ -37,7 +37,25 @@ router.post('/students/add', function(req, res, next) {
 
 /* GET add student form */
 router.get('/students/add', function(req, res, next) {
-  res.render('newStudent', {});
+  res.render('newStudent', {student: {}, action: '/students/add'});
+});
+
+/* GET student object and insert it into update form */
+router.get('/students/update/:id', function(req, res, next) {
+  Students.findById(req.params.id).exec(function(err, doc) {
+    res.render('newStudent', {student: doc, action: '/students/update/' + doc._id});
+  });
+});
+
+/* POST student object to current object in database */
+router.post('/students/update/:id', function(req,res, next) {
+  Students.update({_id: req.params.id}, {$set: req.body}).exec(function(err, doc) {
+    if (err) {
+      // handle err
+    } else {
+      res.redirect('/students/' + req.params.id);
+    }
+  });
 });
 
 /* GET student detail by id. */
