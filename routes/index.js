@@ -58,6 +58,18 @@ router.post('/students/update/:id', function(req,res, next) {
   });
 });
 
+
+/* GET remove student by id. */
+router.get('/students/remove/:id', function(req, res, next) {
+  Students.remove({_id: req.params.id}, function(err, doc) {
+    if (err) {
+      // handle err
+    } else {
+      res.redirect('/students');
+    }
+  })
+});
+
 /* GET student detail by id. */
 router.get('/students/:id', function(req,res,next) {
   Students.findById(req.params.id).exec(function(err, doc) {
